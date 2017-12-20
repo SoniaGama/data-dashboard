@@ -3033,7 +3033,7 @@ google.charts.load('current', {'packages':['bar']});
                         title: 'Porcentaje de Estudiantes que Superan Puntos Tech y HSE',
                         // width: 900,
                         legend: { position: 'none' },
-                        chart: { title: 'CDMX',
+                        chart: { title: 'Lima',
                                  subtitle: 'Estudiantes que superan metas Tech y HSE ' },
                         bars: 'horizontal', // Required for Material Bar Charts.
                         hAxis: {format: 'decimal'},
@@ -3048,5 +3048,36 @@ google.charts.load('current', {'packages':['bar']});
                         };
 
                         var chart = new google.charts.Bar(document.getElementById('limSupera'));
+                        chart.draw(data, options);
+                        };
+
+                        google.charts.setOnLoadCallback(SuperaSlc);
+                        function SuperaSlc() {
+                        var data = new google.visualization.arrayToDataTable([
+                        ['Generacion', 'Percentage'],
+                        perentageSuperaSLC1,
+                        perentageSuperaSLC2,
+                        perentageSuperaSLC3,
+                        ]);
+
+                        var options = {
+                        title: 'Porcentaje de Estudiantes que Superan Puntos Tech y HSE',
+                        // width: 900,
+                        legend: { position: 'none' },
+                        chart: { title: 'Santiago de Chile',
+                                 subtitle: 'Estudiantes que superan metas Tech y HSE ' },
+                        bars: 'horizontal', // Required for Material Bar Charts.
+                        hAxis: {format: 'decimal'},
+                        // height: 400,
+                        colors: [ '#4dc8ea'],
+                        axes: {
+                          x: {
+                            0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                          }
+                        },
+                        bar: { groupWidth: "90%" }
+                        };
+
+                        var chart = new google.charts.Bar(document.getElementById('sclSupera'));
                         chart.draw(data, options);
                         };
