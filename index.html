@@ -9,24 +9,25 @@
   </head>
   <body>
     <header id="header">
-      <img src="./assets/images/logo-laboratoria.svg" alt="logo-laboratoria">
-      <nav id="menu">
-        <ul class="nav">
-  				<li id="home"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-  				<li id="data-students"><a href="#">Datos estudiantes</a>
-  					<ul>
-              <li id="students-arequipa"><a href="">Arequipa</a>
-                <ul>
-  								<li id="students-arequipa-16-2"><a href="">2016-2</a></li>
-  								<li id="students-arequipa-17-1"><a href="">2017-1</a></li>
-  							</ul>
-              </li>
-              <li id="students-cdmx"><a href="">CDMX</a>
-  							<ul>
-  								<li id="students-cdmx-17-1"><a href="">2017-1</a></li>
-  								<li id="students-cdmx-17-2"><a href="">2017-2</a></li>
-  							</ul>
-  						</li>
+      <img class="logo" src="./assets/images/logo-laboratoria.svg" alt="logo-laboratoria">
+        <div class="container_menu">
+          <nav id="menu">
+            <ul class="nav">
+  				    <li id="home"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+  				      <li id="data-students"><a href="#">Datos estudiantes <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></a>
+  					  <ul>
+                <li id="students-arequipa"><a href="">Arequipa</a>
+                  <ul>
+  							  	<li id="students-arequipa-16-2"><a href="">2016-2</a></li>
+  							  	<li id="students-arequipa-17-1"><a href="">2017-1</a></li>
+  							  </ul>
+                    </li>
+                        <li id="students-cdmx"><a href="">CDMX</a>
+  						          	<ul>
+  								          <li id="students-cdmx-17-1"><a href="">2017-1</a></li>
+  								            <li id="students-cdmx-17-2"><a href="">2017-2</a></li>
+  							           </ul>
+  					              	</li>
   						<li id="students-lima"><a href="">Lima</a>
                 <ul>
   								<li id="students-lima-16-2"><a href="">2016-2</a></li>
@@ -43,7 +44,7 @@
               </li>
   					</ul>
   				</li>
-  				<li id="data-staff"><a href="">Datos staff</a>
+  				<li id="data-staff"><a href="">Datos staff <i class="fa fa-angle-down fa-lg" aria-hidden="true"></i></a>
   					<ul>
               <li id="staff-arequipa"><a href="">Arequipa</a>
                 <ul>
@@ -76,15 +77,16 @@
   				</li>
   			</ul>
       </nav>
+        </div>
 		</header>
 
     <section id="tabs" class="clear left">
         <ul class="sedes-tabs">
-          <li><button id="nps" class="tab" type="button"> NPS </button></li>
-          <li><button id="arequipa" class="tab" data-tab-sedes="arequipa" type="button" name="button"> Arequipa </button></li>
-          <li><button id="cdmx" class="tab" data-tab-sedes="cdmx" type="button" name="button"> CDMX </button></li>
-          <li><button id="lima" class="tab" data-tab-sedes="lima" type="button" name="button"> Lima </button></li>
-          <li><button id="chile" class="tab" data-tab-sedes="chile" type="button" name="button"> Santiago de Chile </button></li>
+          <li><button id="nps" class="tab left" data-tab-sedes="nps" type="button"> NPS </button></li>
+          <li><button id="arequipa" class="tab left" data-tab-sedes="arequipa" type="button" name="button"> Arequipa </button></li>
+          <li><button id="cdmx" class="tab left" data-tab-sedes="cdmx" type="button" name="button"> CDMX </button></li>
+          <li><button id="lima" class="tab left" data-tab-sedes="lima" type="button" name="button"> Lima </button></li>
+          <li><button id="chile" class="tab left" data-tab-sedes="chile" type="button" name="button"> Santiago de Chile </button></li>
         </ul>
       </section>
           <!-- contenido -->
@@ -98,6 +100,7 @@
 
     <section id="container-sedes">
           <article id="sede-arequipa" class="sede-arequipa">
+
               <!--Aqui la informacion de Arequipa general-->
           </article>
 
@@ -121,7 +124,16 @@
 
         </section>
 
-    <section id="graphs">
+        <section id="graphs">
+
+          <section class="container1" id="two_page">
+          <h2 class="text-uppercase text-center">Arequipa</h2>
+            <div id="graficas">
+              <div class="arequipa" id="top_x_div" ></div>
+              <div class="arequipa" id="top_1_div" ></div>
+            </div>
+        </section>
+    <!-- <section id="graphs"> -->
 
       <!--Contenedrores graficas porcentaje desercion  -->
       <div id="top_x_div" style="width: 400px; height: 300px;"></div>

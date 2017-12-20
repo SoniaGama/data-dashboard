@@ -127,10 +127,10 @@ function showCdmx(e) {
   paragraph.innerText = 'Información general de la sede de CDMX';
   paragraph1.innerText = '\nEstudiantes satisfechas con la experencia de Laboratoria:\n 2017-1: ' + satisfedStudentsCdmx171()+ '% \n 2017-2: ' + satisfiedCdmx172()+ '%';
   paragraph2.innerText = '\nTotal de estudiantes: ' + totalStudentsSedeCdmx();
-  sedeCDMX.appendChild(paragraph);
-  sedeCDMX.appendChild(paragraph1);
-  sedeCDMX.appendChild(paragraph2);
-  sedeCDMX.appendChild(graphContainer);
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
   // satisfedStudentsCdmx171();
   // satisfiedCdmx172();
 }
@@ -140,10 +140,10 @@ function showLima(e) {
   paragraph.innerText = 'Información general de la sede de Lima';
   paragraph1.innerText = '\nEstudiantes satisfechas con la experencia de Laboratoria:\n 2016-2: ' + satisfiedLima16()+ '% \n 2017-1: ' + satisfiedLima171()+'% \n 2017-2: '+ satisfiedLima172()+ '%';
   paragraph2.innerText = '\nTotal de estudiantes: ' + totalStudentsSedeLima();
-  sedeLima.appendChild(paragraph);
-  sedeLima.appendChild(paragraph1);
-  sedeLima.appendChild(paragraph2);
-  sedeLima.appendChild(graphContainer);
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
   // satisfiedLima16();
   // satisfiedLima171();
   // satisfiedLima172();
@@ -154,10 +154,10 @@ function showChile(e) {
   paragraph.innerText = 'Información general de la sede de Santiago de Chile';
   paragraph1.innerText = '\nEstudiantes satisfechas con la experencia de Laboratoria:\n 2016-2: ' + satisfiedChile16()+ '% \n 2017-1: ' + satisfedStudentsChile171()+'% \n 2017-2: '+ satisfedStudentsChile172()+ '%';
   paragraph2.innerText = '\nTotal de estudiantes: ' + totalStudentsSedeChile();
-  sedeChile.appendChild(paragraph);
-  sedeChile.appendChild(paragraph1);
-  sedeChile.appendChild(paragraph2);
-  sedeChile.appendChild(graphContainer);
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
   // satisfiedChile16
   // satisfedStudentsChile171
   // satisfedStudentsChile172
@@ -168,10 +168,10 @@ function showNps(event){
   paragraph.innerText = 'Net Promoter Score (NPS)';
   paragraph1.innerText = '\nNPS Arequipa 2016-2: ' + npsAqp16() +'%'+ '\nNPS Arequipa 2017-1: ' + npsAqp17()+'%' + '\nNPS CDMX 2017-1: ' + npsCdmx171()+'%' + '\nNPS CDMX 2017-2: ' + npsCdmx172()+'%' + '\nNPS Lima 2016-2: ' + npsLima162()+'%';
   paragraph2.innerText = 'NPS Lima 2017-1: ' + npsLima171()+'%' + '\nNPS Lima 2017-2: ' + npsLima172()+'%' + '\nNPS Chile 2016-2: ' + npsChile162()+'%' + ' \nNPS Chile 2017-1: ' + npsChile171()+'%' + '\nNPS Chile 2017-2: ' + npsChile172()+'%';
-  sedeChile.appendChild(paragraph);
-  sedeChile.appendChild(paragraph1);
-  sedeChile.appendChild(paragraph2);
-  sedeChile.appendChild(graphContainer);
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
   //    npsAqp16();
   //    npsAqp17();
   //    npsCdmx171();
@@ -188,7 +188,6 @@ function showNps(event){
 // function home() {
 //   container.innerHTML = " ";
 // }
-
 
 
 //funciones menu
