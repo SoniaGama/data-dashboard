@@ -1,64 +1,511 @@
-var showHide = function(e) {
-  var tabSedes = e.target.dataset.tabSedes;
-  //console.log(tabSedes);
-  var sedeArequipa = document.getElementById("sede-arequipa");
-  var sedeCDMX = document.getElementById("sede-cdmx");
-  var sedeLima = document.getElementById("sede-lima");
-  var sedeChile = document.getElementById("sede-chile");
-  if(tabSedes === "arequipa") {
-    sedeCDMX.style.display = "none";
-    sedeLima.style.display = "none";
-    sedeChile.style.display = "none";
-    sedeArequipa.style.display = "block";
-
-  } else if(tabSedes === "cdmx") {
-    sedeArequipa.style.display = "none";
-    sedeLima.style.display = "none";
-    sedeChile.style.display = "none";
-    sedeCDMX.style.display = "block";
-
-  } else if(tabSedes === "lima") {
-    sedeArequipa.style.display = "none";
-    sedeCDMX.style.display = "none";
-    sedeChile.style.display = "none";
-    sedeLima.style.display = "block";
-
-  } else if(tabSedes === "chile") {
-    sedeArequipa.style.display = "none";
-    sedeCDMX.style.display = "none";
-    sedeLima.style.display = "none";
-    sedeChile.style.display = "block";
-  }
-};
-
-//se declara la función que ejecutará el conteo de los tabs
-var loadPage = function() { //nombramos a la función
-  sedeCDMX = document.getElementById("sede-cdmx");
-  sedeLima = document.getElementById("sede-lima");
-  sedeChile = document.getElementById("sede-chile");
-  sedeCDMX.style.display = "none";
-  sedeLima.style.display = "none";
-  sedeChile.style.display = "none";
-  var tabsElements = document.getElementsByClassName("tab"); //se crea una variable y en ella guardamos el elemento que se traera del HTML por medio del DOM.
-  for (var i = 0; i < tabsElements.length; i++) { //se crea un for, el cual hará el conteo de los tabs concatenándolos uno en uno.
-    tabsElements[i].addEventListener("click", showHide); //los tabs en su posición i (índice) tendrán el evento 'click' cada que el usuario dé click en uno de ellos
-  } //y al momento de dar click se ejecutará la función chowHide.
-}
-
-loadPage();
-
-/*
-Pagina principal mostrar:
-Alumnas satisfechas
-Total de alumnas presentes
-
-
-
-*/
-
-
 var menu = document.getElementById("menu");
 var container = document.getElementById("container");
+var containerSedes = document.getElementById("container-sedes");
+
+var sedeArequipa = document.getElementById("sede-arequipa");
+var sedeCDMX = document.getElementById("sede-cdmx");
+var sedeLima = document.getElementById("sede-lima");
+var sedeChile = document.getElementById("sede-chile");
+var information = document.getElementById("information");
+
+var tabArequipa = document.getElementById("arequipa");
+var tabCDMX = document.getElementById("cdmx");
+var tabLima = document.getElementById("lima");
+var tabChile = document.getElementById("chile");
+var nps = document.getElementById("nps");
+
+var icon = document.getElementById('home');
+
+tabArequipa.addEventListener('click', showArequipa);
+tabCDMX.addEventListener('click', showCdmx);
+tabLima.addEventListener('click', showLima);
+tabChile.addEventListener('click', showChile);
+nps.addEventListener('click', showNps);
+//icon.addEventListener('click', home);
+
+var paragraph = document.createElement('p');
+var paragraph1 = document.createElement('p');
+var paragraph2 = document.createElement('p');
+var graphContainer = document.createElement('div');
+
+
+var dataStudents = document.getElementById("data-students");
+
+var studentsArequipa = document.getElementById("students-arequipa");
+var studentsArequipa162 = document.getElementById("students-arequipa-16-2");
+var studentsArequipa171 = document.getElementById("students-arequipa-17-1");
+
+var studentsCdmx = document.getElementById('students-cdmx');
+var studentsCdmx171 = document.getElementById("students-cdmx-17-1");
+var studentsCdmx172 = document.getElementById("students-cdmx-17-2");
+
+var studentsLima = document.getElementById('students-lima');
+var studentsLima162 = document.getElementById("students-lima-16-2");
+var studentsLima171 = document.getElementById("students-lima-17-1");
+var studentsLima172 = document.getElementById("students-lima-17-2");
+
+var studentsChile = document.getElementById('students-chile');
+var studentsChile162 = document.getElementById("students-chile-16-2");
+var studentsChile171 = document.getElementById("students-chile-17-1");
+var studentsChile172 = document.getElementById("students-chile-17-2");
+
+
+var dataStaff = document.getElementById("data-staff");
+
+var staffArequipa = document.getElementById("staff-arequipa");
+var staffArequipa162 = document.getElementById("staff-arequipa-16-2");
+var staffArequipa171 = document.getElementById("staff-arequipa-17-1");
+
+var staffCdmx = document.getElementById("staff-arequipa");
+var staffCdmx171 = document.getElementById("staff-cdmx-17-1");
+var staffCdmx172 = document.getElementById("staff-cdmx-17-2");
+
+var staffLima = document.getElementById("staff-lima");
+var staffLima162 = document.getElementById("staff-lima-16-2");
+var staffLima171 = document.getElementById("staff-lima-17-1");
+var staffLima172 = document.getElementById("staff-lima-17-2");
+
+var staffChile = document.getElementById("staff-chile");
+var staffChile162 = document.getElementById("staff-chile-16-2");
+var staffChile171 = document.getElementById("staff-chile-17-1");
+var staffChile172 = document.getElementById("staff-chile-17-2");
+
+
+dataStudents.addEventListener('click', preventD);
+studentsArequipa.addEventListener('click', preventD);
+studentsCdmx.addEventListener('click', preventD);
+studentsLima.addEventListener('click', preventD);
+studentsChile.addEventListener('click', preventD);
+dataStaff.addEventListener('click', preventD);
+staffArequipa.addEventListener('click', preventD);
+staffCdmx.addEventListener('click', preventD);
+staffLima.addEventListener('click', preventD);
+staffChile.addEventListener('click', preventD);
+
+//Eventos Menu
+studentsArequipa162.addEventListener('click', aqpStdnts16);
+studentsArequipa171.addEventListener('click', aqpStdnts17);
+studentsCdmx171.addEventListener('click', cdmxStdnts171);
+studentsCdmx172.addEventListener('click', cdmxStdnts172);
+studentsLima162.addEventListener('click', limaStdnts162);
+studentsLima171.addEventListener('click', limaStdnts171);
+studentsLima172.addEventListener('click', limaStdnts172);
+studentsChile162.addEventListener('click', chileStdnts162);
+studentsChile171.addEventListener('click', chileStdnts171);
+studentsChile172.addEventListener('click', chileStdnts172);
+
+staffArequipa162.addEventListener('click', staffAqp162);
+staffArequipa171.addEventListener('click', staffAqp171);
+staffCdmx171.addEventListener('click', cdmxStf171);
+staffCdmx172.addEventListener('click', cdmxStf172);
+staffLima162.addEventListener('click', limaStf162);
+staffLima171.addEventListener('click', limaStf171);
+staffLima172.addEventListener('click', limaStf172);
+staffChile162.addEventListener('click', chileStf162);
+staffChile171.addEventListener('click', chileStf171);
+staffChile172.addEventListener('click', chileStf172);
+
+
+
+//Funciones tabs
+function showArequipa(e) {
+  event.preventDefault();
+  paragraph.innerText = 'Información general de la sede de Arequipa';
+  paragraph1.innerText = '\nEstudiantes satisfechas con la experencia de Laboratoria: \n 2016-2: ' + satisfedStudentsAqp16()+ '% \n 2017-1: '+ satisfedStudentsAqp17()+ '%';
+  paragraph2.innerText = '\nTotal de estudiantes: ' + totalStudentsSedeAqp();
+  paragraph.id = 'information';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // satisfedStudentsAqp16();
+  // satisfedStudentsAqp17();
+}
+
+function showCdmx(e) {
+  event.preventDefault();
+  paragraph.innerText = 'Información general de la sede de CDMX';
+  paragraph1.innerText = '\nEstudiantes satisfechas con la experencia de Laboratoria:\n 2017-1: ' + satisfedStudentsCdmx171()+ '% \n 2017-2: ' + satisfiedCdmx172()+ '%';
+  paragraph2.innerText = '\nTotal de estudiantes: ' + totalStudentsSedeCdmx();
+  sedeCDMX.appendChild(paragraph);
+  sedeCDMX.appendChild(paragraph1);
+  sedeCDMX.appendChild(paragraph2);
+  sedeCDMX.appendChild(graphContainer);
+  // satisfedStudentsCdmx171();
+  // satisfiedCdmx172();
+}
+
+function showLima(e) {
+  event.preventDefault();
+  paragraph.innerText = 'Información general de la sede de Lima';
+  paragraph1.innerText = '\nEstudiantes satisfechas con la experencia de Laboratoria:\n 2016-2: ' + satisfiedLima16()+ '% \n 2017-1: ' + satisfiedLima171()+'% \n 2017-2: '+ satisfiedLima172()+ '%';
+  paragraph2.innerText = '\nTotal de estudiantes: ' + totalStudentsSedeLima();
+  sedeLima.appendChild(paragraph);
+  sedeLima.appendChild(paragraph1);
+  sedeLima.appendChild(paragraph2);
+  sedeLima.appendChild(graphContainer);
+  // satisfiedLima16();
+  // satisfiedLima171();
+  // satisfiedLima172();
+}
+
+function showChile(e) {
+  event.preventDefault();
+  paragraph.innerText = 'Información general de la sede de Santiago de Chile';
+  paragraph1.innerText = '\nEstudiantes satisfechas con la experencia de Laboratoria:\n 2016-2: ' + satisfiedChile16()+ '% \n 2017-1: ' + satisfedStudentsChile171()+'% \n 2017-2: '+ satisfedStudentsChile172()+ '%';
+  paragraph2.innerText = '\nTotal de estudiantes: ' + totalStudentsSedeChile();
+  sedeChile.appendChild(paragraph);
+  sedeChile.appendChild(paragraph1);
+  sedeChile.appendChild(paragraph2);
+  sedeChile.appendChild(graphContainer);
+  // satisfiedChile16
+  // satisfedStudentsChile171
+  // satisfedStudentsChile172
+}
+
+function showNps(event){
+  event.preventDefault();
+  paragraph.innerText = 'Net Promoter Score (NPS)';
+  paragraph1.innerText = '\nNPS Arequipa 2016-2: ' + npsAqp16() +'%'+ '\nNPS Arequipa 2017-1: ' + npsAqp17()+'%' + '\nNPS CDMX 2017-1: ' + npsCdmx171()+'%' + '\nNPS CDMX 2017-2: ' + npsCdmx172()+'%' + '\nNPS Lima 2016-2: ' + npsLima162()+'%';
+  paragraph2.innerText = 'NPS Lima 2017-1: ' + npsLima171()+'%' + '\nNPS Lima 2017-2: ' + npsLima172()+'%' + '\nNPS Chile 2016-2: ' + npsChile162()+'%' + ' \nNPS Chile 2017-1: ' + npsChile171()+'%' + '\nNPS Chile 2017-2: ' + npsChile172()+'%';
+  sedeChile.appendChild(paragraph);
+  sedeChile.appendChild(paragraph1);
+  sedeChile.appendChild(paragraph2);
+  sedeChile.appendChild(graphContainer);
+  //    npsAqp16();
+  //    npsAqp17();
+  //    npsCdmx171();
+  //    npsCdmx172();
+  //    npsLima162();
+  //
+  //    npsLima171();
+  //    npsLima172();
+  //    npsChile162();
+  //    npsChile171();
+  //    npsChile172();
+ }
+
+// function home() {
+//   container.innerHTML = " ";
+// }
+
+
+
+//funciones menu
+// sedeArequipa
+// sedeCDMX
+// sedeLima
+// sedeChile
+function preventD(event){
+  event.preventDefault();
+}
+
+function aqpStdnts16(event){
+  paragraph.innerText = 'Arequipa generación 2016-2';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionAqp1()+'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + aqpQuantityStudents20162() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ aqpPercentage20162()+'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionAqp1();
+  // aqpQuantityStudents20162();
+  // aqpPercentage20162();
+}
+
+function aqpStdnts17(event){
+  paragraph.innerText = 'Arequipa generación 2017-1';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionAqp2()+'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + aqpQuantityStudents20171() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ aqpPercentage20171() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionAqp2()
+  // aqpQuantityStudents20171()
+  // aqpPercentage20171()
+}
+
+function cdmxStdnts171(event){
+  paragraph.innerText = 'CDMX generación 2017-1';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionCdmx1()+'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + cdmxQuantityStudents20171() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ cdmxPercentage20171() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionCdmx1()
+  // cdmxQuantityStudents20171()
+  // cdmxPercentage20171()
+}
+
+function cdmxStdnts172(event){
+  paragraph.innerText = 'CDMX generación 2017-2';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionCdmx2()+'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + cdmxQuantityStudents20172() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ cdmxPercentage20172() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+
+  // studentsDesertionCdmx2()
+  // cdmxQuantityStudents20172()
+  // cdmxPercentage20172()
+}
+
+function limaStdnts162(event){
+  paragraph.innerText = 'Lima generación 2016-2';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionLim1() +'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + limaQuantityStudents20162() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ limaPercentage20162() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionLim1()
+  // limaQuantityStudents20162()
+  // limaPercentage20162()
+}
+
+function limaStdnts171(event){
+  paragraph.innerText = 'Lima generación 2017-1';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionLim2() +'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + limaQuantityStudents20171() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ limaPercentage20171() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionLim2()
+  // limaQuantityStudents20171()
+  // limaPercentage20171()
+
+}
+
+function limaStdnts172(event){
+  paragraph.innerText = 'Lima generación 2017-2';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionLim3() +'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + limaQuantityStudents20172() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ limaPercentage20172() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionLim3()
+  // limaQuantityStudents20172()
+  // limaPercentage20172()
+
+}
+
+function chileStdnts162(event){
+  paragraph.innerText = 'Santiago de Chile generación 2016-2';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionSCL1() +'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + chileQuantityStudents20162() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ chilePercentage20162() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionSCL1()
+  // chileQuantityStudents20162()
+  // chilePercentage20162()
+}
+
+function chileStdnts171(event){
+  paragraph.innerText = 'Santiago de Chile generación 2017-1';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionSCL2() +'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + chileQuantityStudents20171() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ chilePercentage20171() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionSCL2()
+  // chileQuantityStudents20171()
+  // chilePercentage20171()
+
+}
+
+function chileStdnts172(event){
+  paragraph.innerText = 'Santiago de Chile generación 2017-2';
+  paragraph1.innerText = '\nPromedio de estudiantes que desertaron: ' + studentsDesertionSCL3() +'%';
+  paragraph2.innerText = '\nCantidad promedio de estudiantes que superan la meta de puntos Tech y HSE: ' + chileQuantityStudents20172() + '\nPorcentaje promedio de estudiantes que superan la meta de puntos Tech y HSE: '+ chilePercentage20172() +'%';
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // studentsDesertionSCL3()
+  // chileQuantityStudents20172()
+  // chilePercentage20172()
+}
+
+//Funciones staff
+//staffAqp162
+// staffAqp171
+// cdmxStf171
+// cdmxStf172
+// limaStf162
+// limaStf171
+// limaStf172
+// chileStf162
+// chileStf171
+// chileStf172
+
+function staffAqp162(event){
+  paragraph.innerText = 'Arequipa generación 2016-2';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersAqp16();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisAqp16();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+  // averageTeachersAqp16();
+  // jedisAqp16();
+}
+
+function staffAqp171(event){
+  paragraph.innerText = 'Arequipa generación 2017-1';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersAqp17();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisAqp17();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+
+}
+
+function cdmxStf171(event){
+  paragraph.innerText = 'CDMX generación 2017-1';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersCdmx171();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisCdmx171();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+}
+
+function cdmxStf172(event){
+  paragraph.innerText = 'CDMX generación 2017-2';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersCdmx172();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisCdmx172();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+}
+
+function limaStf162(event){
+  paragraph.innerText = 'Lima generación 2016-2';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersLima162();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisLima16();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+}
+
+function limaStf171(event){
+  paragraph.innerText = 'Lima generación 2017-1';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersLima171();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisLima171();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+}
+
+function limaStf172(event){
+  paragraph.innerText = 'Lima generación 2017-2';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersLima172();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisLima172();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+}
+
+function chileStf162(event){
+  paragraph.innerText = 'Santiago de Chile generación 2016-2';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersChile162();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisChile16();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+}
+
+function chileStf171(event){
+  paragraph.innerText = 'Santiago de Chile generación 2017-1';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersChile171();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisChile171();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+
+}
+
+function chileStf172(event){
+  paragraph.innerText = 'Santiago de Chile generación 2017-2';
+  paragraph1.innerText = '\nLa puntuación promedio de l@s profesores.: ' + averageTeachersChile172();
+  paragraph2.innerText = '\nLa puntuación promedio de l@s jedi masters: ' + jedisChile172();
+  sedeArequipa.appendChild(paragraph);
+  sedeArequipa.appendChild(paragraph1);
+  sedeArequipa.appendChild(paragraph2);
+  sedeArequipa.appendChild(graphContainer);
+}
+
+
+
+// var showHide = function(e) {
+//   var tabSedes = e.target.dataset.tabSedes;
+//   if(tabSedes === "arequipa") {
+//
+//    var paragraph = document.createElement('p')
+//    // paragraph.createTextNode = "Información general de la sede de Arequipa";
+//    // paragraph.id = "informationArequipa";
+//    // sedeArequipa.appendChild(paragraph);
+//     //asignar display a los elementos creados
+//
+//     sedeCDMX.style.display = "none";
+//     sedeLima.style.display = "none";
+//     sedeChile.style.display = "none";
+//     sedeArequipa.style.display = "block";
+//
+//   } else if(tabSedes === "cdmx") {
+//     sedeArequipa.style.display = "none";
+//     sedeLima.style.display = "none";
+//     sedeChile.style.display = "none";
+//     sedeCDMX.style.display = "block";
+//
+//   } else if(tabSedes === "lima") {
+//     sedeArequipa.style.display = "none";
+//     sedeCDMX.style.display = "none";
+//     sedeChile.style.display = "none";
+//     sedeLima.style.display = "block";
+//
+//   } else if(tabSedes === "chile") {
+//     sedeArequipa.style.display = "none";
+//     sedeCDMX.style.display = "none";
+//     sedeLima.style.display = "none";
+//     sedeChile.style.display = "block";
+//   }
+// };
+//
+// //se declara la función que ejecutará el conteo de los tabs
+// var loadPage = function() { //nombramos a la función
+//   sedeCDMX = document.getElementById("sede-cdmx");
+//   sedeLima = document.getElementById("sede-lima");
+//   sedeChile = document.getElementById("sede-chile");
+//
+//   //var globales de elemntos creados
+//
+//
+//   //display none a todos los elementos creados
+//   sedeCDMX.style.display = "none";
+//   sedeLima.style.display = "none";
+//   sedeChile.style.display = "none";
+//   var tabsElements = document.getElementsByClassName("tab"); //se crea una variable y en ella guardamos el elemento que se traera del HTML por medio del DOM.
+//   for (var i = 0; i < tabsElements.length; i++) { //se crea un for, el cual hará el conteo de los tabs concatenándolos uno en uno.
+//     tabsElements[i].addEventListener("click", showHide); //los tabs en su posición i (índice) tendrán el evento 'click' cada que el usuario dé click en uno de ellos
+//   } //y al momento de dar click se ejecutará la función chowHide.
+// }
+// loadPage();
 
 
 var aqp = data['AQP'];
@@ -98,7 +545,7 @@ function satisfedStudentsAqp16() {
   return totalP;
 }
 satisfedStudentsAqp16();
-document.write("<br>El promedio de alumnas satisfechas con la experiencia de Laboratoria en Arequipa 2016-2: "+ satisfedStudentsAqp16() + "%.<br>");
+// document.write("<br>El promedio de alumnas satisfechas con la experiencia de Laboratoria en Arequipa 2016-2: "+ satisfedStudentsAqp16() + "%.<br>");
 
 
 function satisfedStudentsAqp17(){
@@ -118,11 +565,13 @@ function satisfedStudentsAqp17(){
   var totalP = sumaPromoters/4;
   // console.log(totalP);
   // console.log(promotersResult);
+
     return totalP;
 
 }
 satisfedStudentsAqp17();
-document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Arequipa 2017-1: "+ satisfedStudentsAqp17() + "%.<br>");
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Arequipa 2017-1: "+ satisfedStudentsAqp17() + "%.<br>");
+
 
 
 function satisfedStudentsCdmx171(){
@@ -139,11 +588,13 @@ function satisfedStudentsCdmx171(){
   }
   var totalP = sumaPromoters/4;
   // console.log(totalP);
+
     return totalP;
 
 }
 satisfedStudentsCdmx171();
-document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en CDMX 2017-1: "+ satisfedStudentsCdmx171() + "%.<br>");
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en CDMX 2017-1: "+ satisfedStudentsCdmx171() + "%.<br>");
+
 
 function satisfiedCdmx172() {
   //var accessDataPromoters = data['CDMX']['2017-2']['ratings']
@@ -170,7 +621,7 @@ function satisfiedCdmx172() {
 }
 
 satisfiedCdmx172();
-document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en CDMX 2017-2: "+ satisfiedCdmx172() + "%.<br>");
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en CDMX 2017-2: "+ satisfiedCdmx172() + "%.<br>");
 
 function satisfiedLima16() {
   var accessDataPromoters = data['LIM']['2016-2']['ratings'];
@@ -196,7 +647,7 @@ function satisfiedLima16() {
 }
 
 satisfiedLima16();
-document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Lima-2016-2: "+ satisfiedLima16() + "%.<br>");
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Lima-2016-2: "+ satisfiedLima16() + "%.<br>");
 
 function satisfiedLima171() {
   var accessDataPromoters = data['LIM']['2017-1']['ratings'];
@@ -224,10 +675,60 @@ function satisfiedLima171() {
 }
 
 satisfiedLima171();
-document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Lima-2017-1: "+ satisfiedLima171() + "%.<br>");
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Lima-2017-1: "+ satisfiedLima171() + "%.<br>");
 
+function satisfiedLima172() {
+  var accessDataPromoters = data['LIM']['2017-2']['ratings'];
+  //console.log(accessDataPromoters);
+  var satisfiedArray = [];
+  var sumSatisfied = null;
+  for (var i = 0; i < accessDataPromoters.length; i++) {
+    var dataPromoters = accessDataPromoters[i]['nps']['promoters']
+    //console.log(dataPromoters);
+    //console.log(accessDataPromoters[i]);
+    satisfiedArray.push(dataPromoters);
+    //console.log(satisfiedArray);
+  }
+  var saveSatisfied = satisfiedArray;
+  //console.log(saveSatisfied);
+  for (var j = 0; j < saveSatisfied.length; j++) {
+    sumSatisfied = sumSatisfied + saveSatisfied[j];
+    //console.log(sumSatisfied);
+    //console.log(saveSatisfied[j]);
+  }
+  var totalSatisfied = (sumSatisfied/4);
+  //console.log(totalSatisfied);
+  return totalSatisfied;
+}
 
+satisfiedLima172();
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Lima-2017-2: "+ satisfiedLima172() + "%.<br>");
 
+function satisfiedChile16() {
+  var accessDataPromoters = data['SCL']['2016-2']['ratings'];
+  //console.log(accessDataPromoters);
+  var satisfiedArray = [];
+  var sumSatisfied = null;
+  for (var i = 0; i < accessDataPromoters.length; i++) {
+    var dataPromoters = accessDataPromoters[i]['nps']['promoters'];
+    //console.log(dataPromoters);
+    //console.log(accessDataPromoters[i]);
+    satisfiedArray.push(dataPromoters);
+    //console.log(satisfiedArray);
+  }
+  var saveSatisfied = satisfiedArray;
+  //console.log(saveSatisfied);
+  for (var j = 0; j < saveSatisfied.length; j++) {
+    sumSatisfied = sumSatisfied = saveSatisfied[j];
+    //console.log(sumSatisfied);
+  }
+  var totalSatisfied = (sumSatisfied/4);
+  //console.log(totalSatisfied);
+  return totalSatisfied;
+}
+
+satisfiedChile16();
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Santiago de Chile 2016-2: "+ satisfiedChile16() + "%.<br>");
 
 function satisfedStudentsChile171(){
   var promotersArray = [];
@@ -247,7 +748,7 @@ function satisfedStudentsChile171(){
 
 }
 satisfedStudentsChile171();
-document.write("<br><br>El promedio de alumnas satisfechas con la experiencia de Laboratoria en Santiago de Chile 2017-1: "+ satisfedStudentsChile171() + "%.<br>");
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Santiago de Chile 2017-1: "+ satisfedStudentsChile171() + "%.<br>");
 
 function satisfedStudentsChile172(){
   var promotersArray = [];
@@ -267,7 +768,19 @@ function satisfedStudentsChile172(){
   return totalP;
 }
 satisfedStudentsChile172();
-document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Santiago de Chile 2017-2: "+ satisfedStudentsChile172() + "%.<br>");
+// document.write("El promedio de alumnas satisfechas con la experiencia de Laboratoria en Santiago de Chile 2017-2: "+ satisfedStudentsChile172() + "%.<br>");
+//Variables en las que creamos los arreglos para las funicones de las Graficas
+
+var satisfiedAqp1= [' 2016-2', satisfedStudentsAqp16() ];
+var satisfiedAqp2= [' 2017-1', satisfedStudentsAqp17() ];
+var satisfiedCdmx1= [' 2017-1', satisfedStudentsCdmx171()];
+var satisfiedCdmx2= [' 2017-2', satisfiedCdmx172()];
+var satisfiedSCL1 = ['2016-2', satisfiedChile16()]
+var satisfiedSCL2 = ['2017-1', satisfedStudentsChile171() ]
+var satisfiedSCL2 = ['2017-2', satisfedStudentsChile172() ]
+var satisfiedLim1 = ['2016-2', satisfiedLima16() ]
+var satisfiedLim2 = ['2017-1', satisfiedLima171()]
+var satisfiedLim3 = ['2017-2', satisfiedLima172()]
 
 
 function npsAqp16() {
@@ -659,16 +1172,16 @@ function npsChile172(){
 }
 npsChile172();
 
-document.writeln("<br> El Net Promoter Score promedio de Arequipa 2016-2 es " + npsAqp16() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de Arequipa 2017-1 es " + npsAqp17() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de CDMX 2017-1 es " + npsCdmx171() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de CDMX 2017-2 es " + npsCdmx172() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de Lima 2016-2 es " + npsLima162() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de Lima 2017-1 es " + npsLima171() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de Lima 2017-2 es " + npsLima172() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de Chile 2016-2 es " + npsChile162() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de Chile 2017-1 es " + npsChile171() + "%.")
-document.writeln("<br> El Net Promoter Score promedio de Chile 2017-2 es " + npsChile172() + "%.<br>")
+// document.writeln("<br> El Net Promoter Score promedio de Arequipa 2016-2 es " + npsAqp16() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de Arequipa 2017-1 es " + npsAqp17() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de CDMX 2017-1 es " + npsCdmx171() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de CDMX 2017-2 es " + npsCdmx172() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de Lima 2016-2 es " + npsLima162() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de Lima 2017-1 es " + npsLima171() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de Lima 2017-2 es " + npsLima172() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de Chile 2016-2 es " + npsChile162() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de Chile 2017-1 es " + npsChile171() + "%.")
+// document.writeln("<br> El Net Promoter Score promedio de Chile 2017-2 es " + npsChile172() + "%.<br>")
 
 
 
@@ -691,7 +1204,7 @@ function totalStudentsGen162Aqp() {
    return lengthGen;
 }
 totalStudentsGen162Aqp();
-document.write("<br>En la generación 2016-2 de Arequipa hay: "+ totalStudentsGen162Aqp() + " estudiantes.<br>");
+// document.write("<br>En la generación 2016-2 de Arequipa hay: "+ totalStudentsGen162Aqp() + " estudiantes.<br>");
 
 
 function totalStudentsGen171Aqp() {
@@ -713,7 +1226,7 @@ function totalStudentsGen171Aqp() {
    return lengthGen;
 }
 totalStudentsGen171Aqp();
-document.write("En la generación 2017-1 de Arequipa hay: "+ totalStudentsGen171Aqp() + " estudiantes.<br><br>");
+// document.write("En la generación 2017-1 de Arequipa hay: "+ totalStudentsGen171Aqp() + " estudiantes.<br><br>");
 
 function totalStudentsGen171Cdmx() {
   var gen = cdmx["2017-1"];
@@ -734,7 +1247,7 @@ function totalStudentsGen171Cdmx() {
    return lengthGen;
 }
 totalStudentsGen171Cdmx();
-document.write("En la generación 2017-1 de CDMX hay: "+ totalStudentsGen171Cdmx() + " estudiantes.<br>");
+// document.write("En la generación 2017-1 de CDMX hay: "+ totalStudentsGen171Cdmx() + " estudiantes.<br>");
 
 
 function totalStudentsGen172Cdmx() {
@@ -756,7 +1269,7 @@ function totalStudentsGen172Cdmx() {
    return lengthGen;
 }
 totalStudentsGen172Cdmx();
-document.write("En la generación 2017-2 de CDMX hay: "+ totalStudentsGen172Cdmx() + " estudiantes.<br><br>");
+// document.write("En la generación 2017-2 de CDMX hay: "+ totalStudentsGen172Cdmx() + " estudiantes.<br><br>");
 
 
 function totalStudentsGen162Lima() {
@@ -778,7 +1291,7 @@ function totalStudentsGen162Lima() {
    return lengthGen;
 }
 totalStudentsGen162Lima();
-document.write("En la generación 2016-2 de Lima hay: "+ totalStudentsGen162Lima() + " estudiantes.<br>");
+// document.write("En la generación 2016-2 de Lima hay: "+ totalStudentsGen162Lima() + " estudiantes.<br>");
 
 
 function totalStudentsGen171Lima() {
@@ -800,7 +1313,7 @@ function totalStudentsGen171Lima() {
    return lengthGen;
 }
 totalStudentsGen171Lima();
-document.write("En la generación 2017-1 de Lima hay: "+ totalStudentsGen171Lima() + " estudiantes.<br>");
+// document.write("En la generación 2017-1 de Lima hay: "+ totalStudentsGen171Lima() + " estudiantes.<br>");
 
 
 function totalStudentsGen172Lima() {
@@ -822,7 +1335,7 @@ function totalStudentsGen172Lima() {
    return lengthGen;
 }
 totalStudentsGen172Lima();
-document.write("En la generación 2017-2 de Lima hay: "+ totalStudentsGen172Lima() + " estudiantes.<br><br>");
+// document.write("En la generación 2017-2 de Lima hay: "+ totalStudentsGen172Lima() + " estudiantes.<br><br>");
 
 
 function totalStudentsGen162Chile() {
@@ -844,7 +1357,7 @@ function totalStudentsGen162Chile() {
    return lengthGen;
 }
 totalStudentsGen162Chile();
-document.write("En la generación 2016-2 de Santiago de Chile hay: "+ totalStudentsGen162Chile() + " estudiantes.<br>");
+// document.write("En la generación 2016-2 de Santiago de Chile hay: "+ totalStudentsGen162Chile() + " estudiantes.<br>");
 
 
 function totalStudentsGen171Chile() {
@@ -866,7 +1379,7 @@ function totalStudentsGen171Chile() {
    return lengthGen;
 }
 totalStudentsGen171Chile();
-document.write("En la generación 2017-1 de Santiago de Chile hay: "+ totalStudentsGen171Chile() + " estudiantes.<br>");
+// document.write("En la generación 2017-1 de Santiago de Chile hay: "+ totalStudentsGen171Chile() + " estudiantes.<br>");
 
 function totalStudentsGen172Chile() {
   var gen = chile["2017-2"];
@@ -887,7 +1400,7 @@ function totalStudentsGen172Chile() {
    return lengthGen;
 }
 totalStudentsGen172Chile();
-document.write("En la generación 2017-2 de Santiago de Chile hay: "+ totalStudentsGen172Chile() + " estudiantes.<br>");
+// document.write("En la generación 2017-2 de Santiago de Chile hay: "+ totalStudentsGen172Chile() + " estudiantes.<br>");
 
 
 function totalStudentsSedeAqp(){
@@ -962,10 +1475,10 @@ function totalStudentsSedeChile(){
  }
 totalStudentsSedeChile();
 
-document.writeln("<br> Total de estudiantes sede Arequipa: "+ totalStudentsSedeAqp());
-document.writeln("<br> Total de estudiantes sede CDMX: "+ totalStudentsSedeCdmx());
-document.writeln("<br> Total de estudiantes sede Lima: "+ totalStudentsSedeLima());
-document.writeln("<br> Total de estudiantes sede Santiago de chile: "+ totalStudentsSedeChile());
+// document.writeln("<br> Total de estudiantes sede Arequipa: "+ totalStudentsSedeAqp());
+// document.writeln("<br> Total de estudiantes sede CDMX: "+ totalStudentsSedeCdmx());
+// document.writeln("<br> Total de estudiantes sede Lima: "+ totalStudentsSedeLima());
+// document.writeln("<br> Total de estudiantes sede Santiago de chile: "+ totalStudentsSedeChile());
 
 
 var aqpQuantityStudents20162 = function() {
@@ -1214,16 +1727,16 @@ var chileQuantityStudents20172 = function() {
 };
 chileQuantityStudents20172();
 
-document.write("<br><br>En la Generación 2016-2 Arequipa: " + aqpQuantityStudents20162() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2017-1 Arequipa: " + aqpQuantityStudents20171() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2017-1 CDMX: " + cdmxQuantityStudents20171() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2017-2 CDMX: " + cdmxQuantityStudents20172() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2016-2 Lima: " + limaQuantityStudents20162() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2017-1 Lima: " + limaQuantityStudents20171() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2017-2 Lima: " + limaQuantityStudents20172() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2016-2 de Santiago de Chile: " + chileQuantityStudents20162() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2017-1 de Santiago de Chile: " + chileQuantityStudents20171() + " estudiantes superan la meta de pts. tech y HSE.<br>");
-document.write("En la Generación 2017-2 de Santiago de Chile: " + chileQuantityStudents20172() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("<br><br>En la Generación 2016-2 Arequipa: " + aqpQuantityStudents20162() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2017-1 Arequipa: " + aqpQuantityStudents20171() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2017-1 CDMX: " + cdmxQuantityStudents20171() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2017-2 CDMX: " + cdmxQuantityStudents20172() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2016-2 Lima: " + limaQuantityStudents20162() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2017-1 Lima: " + limaQuantityStudents20171() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2017-2 Lima: " + limaQuantityStudents20172() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2016-2 de Santiago de Chile: " + chileQuantityStudents20162() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2017-1 de Santiago de Chile: " + chileQuantityStudents20171() + " estudiantes superan la meta de pts. tech y HSE.<br>");
+// document.write("En la Generación 2017-2 de Santiago de Chile: " + chileQuantityStudents20172() + " estudiantes superan la meta de pts. tech y HSE.<br>");
 
 
 var aqpPercentage20162 = function() {
@@ -1475,16 +1988,16 @@ var chilePercentage20172 = function() {
 chilePercentage20172();
 
 
-document.write("<br><br> Generación 2016-2 Arequipa: " + aqpPercentage20162() + "% supero la meta de puntos Tech y HSE.");
-document.write("<br> Generación del 2017-1 Arequipa: " + aqpPercentage20171() + "% supero la meta de puntos Tech y HSE.");
-document.write("<br> Generación del 2017-1 CDMX: " + cdmxPercentage20171() + "% supero la meta de puntos Tech y HSE.");
-document.write(" <br> Generación del 2017-2 CDMX: " + cdmxPercentage20172() + "% supero la meta de puntos Tech y HSE.");
-document.writeln("<br> Generación del 2016-2 Lima: " + limaPercentage20162() + "% supero la meta de puntos Tech y HSE.");
-document.writeln("<br> Generación del 2017-1 Lima: " + limaPercentage20171() + "% supero la meta de puntos Tech y HSE.");
-document.writeln("<br> Generación del 2017-2 Lima: " + limaPercentage20172() + "% supero la meta de puntos Tech y HSE.");
-document.writeln("<br> Generación del 2016-2 Santiago de Chile: " + chilePercentage20162() + "% supero la meta de puntos Tech y HSE.");
-document.writeln("<br> Generación del 2017-1 Santiago de Chile: " + chilePercentage20171() + "% supero la meta de puntos Tech y HSE.");
-document.writeln("<br> Generación del 2017-2 Santiago de Chile: " + chilePercentage20172() + "% supero la meta de puntos Tech y HSE.");
+// document.write("<br><br> Generación 2016-2 Arequipa: " + aqpPercentage20162() + "% supero la meta de puntos Tech y HSE.");
+// document.write("<br> Generación del 2017-1 Arequipa: " + aqpPercentage20171() + "% supero la meta de puntos Tech y HSE.");
+// document.write("<br> Generación del 2017-1 CDMX: " + cdmxPercentage20171() + "% supero la meta de puntos Tech y HSE.");
+// document.write(" <br> Generación del 2017-2 CDMX: " + cdmxPercentage20172() + "% supero la meta de puntos Tech y HSE.");
+// document.writeln("<br> Generación del 2016-2 Lima: " + limaPercentage20162() + "% supero la meta de puntos Tech y HSE.");
+// document.writeln("<br> Generación del 2017-1 Lima: " + limaPercentage20171() + "% supero la meta de puntos Tech y HSE.");
+// document.writeln("<br> Generación del 2017-2 Lima: " + limaPercentage20172() + "% supero la meta de puntos Tech y HSE.");
+// document.writeln("<br> Generación del 2016-2 Santiago de Chile: " + chilePercentage20162() + "% supero la meta de puntos Tech y HSE.");
+// document.writeln("<br> Generación del 2017-1 Santiago de Chile: " + chilePercentage20171() + "% supero la meta de puntos Tech y HSE.");
+// document.writeln("<br> Generación del 2017-2 Santiago de Chile: " + chilePercentage20172() + "% supero la meta de puntos Tech y HSE.");
 
 
 var averageTeachersAqp16 = function() {
@@ -1506,7 +2019,7 @@ var averageTeachersAqp16 = function() {
     return averageTeachers;
 };
 averageTeachersAqp16();
-document.write("<br><br>Generacion 2016-2 Arequipa, el promedio de los profesores fue de " + averageTeachersAqp16());
+// document.write("<br><br>Generacion 2016-2 Arequipa, el promedio de los profesores fue de " + averageTeachersAqp16());
 
 function averageTeachersAqp17() {
   var addTeachers17 = [];
@@ -1524,7 +2037,7 @@ function averageTeachersAqp17() {
   return averageTeachers17;
 };
 averageTeachersAqp17();
-document.write("<br>Generacion 2017-1 Arequipa, el promedio de los profesores fue de " + averageTeachersAqp17());
+// document.write("<br>Generacion 2017-1 Arequipa, el promedio de los profesores fue de " + averageTeachersAqp17());
 
 function averageTeachersCdmx171() {
   var addTeachers17 = [];
@@ -1542,7 +2055,7 @@ function averageTeachersCdmx171() {
   return averageTeachers17;
 };
 averageTeachersCdmx171();
-document.write("<br>Generacion 2017-1 CDMX, el promedio de los profesores fue de " + averageTeachersCdmx171());
+// document.write("<br>Generacion 2017-1 CDMX, el promedio de los profesores fue de " + averageTeachersCdmx171());
 
 function averageTeachersCdmx172() {
   var addTeachers17 = [];
@@ -1560,7 +2073,7 @@ function averageTeachersCdmx172() {
   return averageTeachers17;
 };
 averageTeachersCdmx172();
-document.write("<br>Generacion 2017-2 CDMX, el promedio de los profesores fue de " + averageTeachersCdmx171());
+// document.write("<br>Generacion 2017-2 CDMX, el promedio de los profesores fue de " + averageTeachersCdmx171());
 
 function averageTeachersLima162() {
   var addTeachers17 = [];
@@ -1578,7 +2091,7 @@ function averageTeachersLima162() {
   return averageTeachers17;
 };
 averageTeachersLima162();
-document.write("<br>Generacion 2016-2 Lima, el promedio de los profesores fue de " + averageTeachersLima162());
+// document.write("<br>Generacion 2016-2 Lima, el promedio de los profesores fue de " + averageTeachersLima162());
 
 function averageTeachersLima171() {
   var addTeachers17 = [];
@@ -1596,7 +2109,7 @@ function averageTeachersLima171() {
   return averageTeachers17;
 };
 averageTeachersLima171();
-document.write("<br>Generacion 2017-1 Lima, el promedio de los profesores fue de " + averageTeachersLima171());
+// document.write("<br>Generacion 2017-1 Lima, el promedio de los profesores fue de " + averageTeachersLima171());
 
 function averageTeachersLima172() {
   var addTeachers17 = [];
@@ -1614,7 +2127,7 @@ function averageTeachersLima172() {
   return averageTeachers17;
 };
 averageTeachersLima172();
-document.write("<br>Generacion 2017-2 Lima, el promedio de los profesores fue de " + averageTeachersLima172());
+// document.write("<br>Generacion 2017-2 Lima, el promedio de los profesores fue de " + averageTeachersLima172());
 
 function averageTeachersChile162() {
   var addTeachers17 = [];
@@ -1632,7 +2145,7 @@ function averageTeachersChile162() {
   return averageTeachers17;
 };
 averageTeachersChile162();
-document.write("<br>Generacion 2016-2 Santiago de Chile, el promedio de los profesores fue de " + averageTeachersChile162());
+// document.write("<br>Generacion 2016-2 Santiago de Chile, el promedio de los profesores fue de " + averageTeachersChile162());
 
 function averageTeachersChile171() {
   var addTeachers17 = [];
@@ -1650,7 +2163,7 @@ function averageTeachersChile171() {
   return averageTeachers17;
 };
 averageTeachersChile171();
-document.write("<br>Generacion 2017-1 Santiago de Chile, el promedio de los profesores fue de " + averageTeachersChile171());
+// document.write("<br>Generacion 2017-1 Santiago de Chile, el promedio de los profesores fue de " + averageTeachersChile171());
 
 function averageTeachersChile172() {
   var addTeachers17 = [];
@@ -1668,19 +2181,19 @@ function averageTeachersChile172() {
   return averageTeachers17;
 };
 averageTeachersChile172();
-document.write("<br>Generacion 2017-2 Santiago de Chile, el promedio de los profesores fue de " + averageTeachersChile172());
+// document.write("<br>Generacion 2017-2 Santiago de Chile, el promedio de los profesores fue de " + averageTeachersChile172());
 
 
 //Esta funcion nos saca el porcentaje de deserción de las estudiantes
 var studentsDesertionAqp1 = function() {
-var accountActive = [];
-var arrayDesertion = [];
-var accessDataStudents = data['AQP']['2016-2']['students'];
-for (var i = 0; i < accessDataStudents.length; i++) {
-  var accessDataDesertion = accessDataStudents[i]['active'];
+ var accountActive = [];
+ var arrayDesertion = [];
+ var accessDataStudents = data['AQP']['2016-2']['students'];
+ for (var i = 0; i < accessDataStudents.length; i++) {
+   var accessDataDesertion = accessDataStudents[i]['active'];
   //console.log(accessDataDesertion);
   accountActive.push(accessDataDesertion);
-} var dataDesertion = accountActive;
+ } var dataDesertion = accountActive;
   //console.log(dataDesertion);
   for (var n = 0; n < dataDesertion.length; n++) {
    if(dataDesertion[n] === false) {
@@ -1996,11 +2509,210 @@ function jedisAqp17() {
   }
 
   var averageJediAqp17 = (sumJediAqp17/3);
-  console.log(averageJediAqp17);
+  //console.log(averageJediAqp17);
   return averageJediAqp17;
 }
 jedisAqp17();
 
+function jedisCdmx171() {
+  var accessDataJedis = data['CDMX']['2017-1']['ratings'];
+  //console.log(accessDataJedis);
+  var addDataJedi = [];
+  var sumJedi = null;
+  for (var i = 0; i < accessDataJedis.length; i++) {
+    //console.log(accessDataJedis[i]);
+    var dataJedi = accessDataJedis[i]['jedi'];
+    addDataJedi.push(dataJedi);
+    //console.log(addDataJedi);
+  }
+  var saveDataJedi = addDataJedi;
+  //console.log(saveDataJedi);
+  for (var j = 0; j < saveDataJedi.length; j++) {
+    sumJedi = sumJedi + saveDataJedi[j];
+    //console.log(sumJedi);
+    //console.log(saveDataJedi[j]);
+  }
+  var averageJedi = (sumJedi/3);
+  //console.log(averageJedi);
+  return averageJedi;
+}
+
+jedisCdmx171();
+
+function jedisCdmx172() {
+  var accessDataJedis = data['CDMX']['2017-2']['ratings'];
+  //console.log(accessDataJedis);
+  var addDataJedi = [];
+  var sumJedi = null;
+  for (var i = 0; i < accessDataJedis.length; i++) {
+    //console.log(accessDataJedis[i]);
+    var dataJedi = accessDataJedis[i]['jedi'];
+    addDataJedi.push(dataJedi);
+    //console.log(addDataJedi);
+  }
+  var saveDataJedi = addDataJedi;
+  //console.log(saveDataJedi);
+  for (var j = 0; j < saveDataJedi.length; j++) {
+    sumJedi = sumJedi + saveDataJedi[j];
+    //console.log(sumJedi);
+    //console.log(saveDataJedi[j]);
+  }
+  var averageJedi = (sumJedi/2);
+  //console.log(averageJedi);
+  return averageJedi;
+}
+
+jedisCdmx172();
+
+function jedisLima16() {
+  var accessDataJedis = data['LIM']['2016-2']['ratings'];
+  //console.log(accessDataJedis);
+  var addDataJedi = [];
+  var sumJedi = null;
+  for (var i = 0; i < accessDataJedis.length; i++) {
+    //console.log(accessDataJedis[i]);
+    var dataJedi = accessDataJedis[i]['jedi'];
+    addDataJedi.push(dataJedi);
+    //console.log(addDataJedi);
+  }
+  var saveDataJedi = addDataJedi;
+  //console.log(saveDataJedi);
+  for (var j = 0; j < saveDataJedi.length; j++) {
+    sumJedi = sumJedi + saveDataJedi[j];
+    //console.log(sumJedi);
+    //console.log(saveDataJedi[j]);
+  }
+  var averageJedi = (sumJedi/2);
+  //console.log(averageJedi);
+  return averageJedi;
+}
+
+jedisLima16();
+
+function jedisLima171() {
+  var accessDataJedis = data['LIM']['2017-1']['ratings'];
+  //console.log(accessDataJedis);
+  var addDataJedi = [];
+  var sumJedi = null;
+  for (var i = 0; i < accessDataJedis.length; i++) {
+    //console.log(accessDataJedis[i]);
+    var dataJedi = accessDataJedis[i]['jedi'];
+    addDataJedi.push(dataJedi);
+    //console.log(addDataJedi);
+  }
+  var saveDataJedi = addDataJedi;
+  //console.log(saveDataJedi);
+  for (var j = 0; j < saveDataJedi.length; j++) {
+    sumJedi = sumJedi + saveDataJedi[j];
+    //console.log(sumJedi);
+    //console.log(saveDataJedi[j]);
+  }
+  var averageJedi = (sumJedi/4);
+  //console.log(averageJedi);
+  return averageJedi;
+}
+
+jedisLima171();
+
+function jedisLima172() {
+  var accessDataJedis = data['LIM']['2017-2']['ratings'];
+  //console.log(accessDataJedis);
+  var addDataJedi = [];
+  var sumJedi = null;
+  for (var i = 0; i < accessDataJedis.length; i++) {
+    //console.log(accessDataJedis[i]);
+    var dataJedi = accessDataJedis[i]['jedi'];
+    addDataJedi.push(dataJedi);
+    //console.log(addDataJedi);
+  }
+  var saveDataJedi = addDataJedi;
+  //console.log(saveDataJedi);
+  for (var j = 0; j < saveDataJedi.length; j++) {
+    sumJedi = sumJedi + saveDataJedi[j];
+    //console.log(sumJedi);
+    //console.log(saveDataJedi[j]);
+  }
+  var averageJedi = (sumJedi/2);
+  //console.log(averageJedi);
+  return averageJedi;
+}
+
+jedisLima172();
+
+function jedisChile16() {
+  var accessDataJedis = data['SCL']['2016-2']['ratings'];
+  //console.log(accessDataJedis);
+  var addDataJedi = [];
+  var sumJedi = null;
+  for (var i = 0; i < accessDataJedis.length; i++) {
+    //console.log(accessDataJedis[i]);
+    var dataJedi = accessDataJedis[i]['jedi'];
+    addDataJedi.push(dataJedi);
+    //console.log(addDataJedi);
+  }
+  var saveDataJedi = addDataJedi;
+  //console.log(saveDataJedi);
+  for (var j = 0; j < saveDataJedi.length; j++) {
+    sumJedi = sumJedi + saveDataJedi[j];
+    //console.log(sumJedi);
+    //console.log(saveDataJedi[j]);
+  }
+  var averageJedi = (sumJedi/4);
+  //console.log(averageJedi);
+  return averageJedi;
+}
+
+jedisChile16();
+
+function jedisChile171() {
+  var accessDataJedis = data['SCL']['2017-1']['ratings'];
+  //console.log(accessDataJedis);
+  var addDataJedi = [];
+  var sumJedi = null;
+  for (var i = 0; i < accessDataJedis.length; i++) {
+    //console.log(accessDataJedis[i]);
+    var dataJedi = accessDataJedis[i]['jedi'];
+    addDataJedi.push(dataJedi);
+    //console.log(addDataJedi);
+  }
+  var saveDataJedi = addDataJedi;
+  //console.log(saveDataJedi);
+  for (var j = 0; j < saveDataJedi.length; j++) {
+    sumJedi = sumJedi + saveDataJedi[j];
+    //console.log(sumJedi);
+    //console.log(saveDataJedi[j]);
+  }
+  var averageJedi = (sumJedi/3);
+  //console.log(averageJedi);
+  return averageJedi;
+}
+
+jedisChile171();
+
+function jedisChile172() {
+  var accessDataJedis = data['SCL']['2017-2']['ratings'];
+  //console.log(accessDataJedis);
+  var addDataJedi = [];
+  var sumJedi = null;
+  for (var i = 0; i < accessDataJedis.length; i++) {
+    //console.log(accessDataJedis[i]);
+    var dataJedi = accessDataJedis[i]['jedi'];
+    addDataJedi.push(dataJedi);
+    //console.log(addDataJedi);
+  }
+  var saveDataJedi = addDataJedi;
+  //console.log(saveDataJedi);
+  for (var j = 0; j < saveDataJedi.length; j++) {
+    sumJedi = sumJedi + saveDataJedi[j];
+    //console.log(sumJedi);
+    //console.log(saveDataJedi[j]);
+  }
+  var averageJedi = (sumJedi/2);
+  //console.log(averageJedi);
+  return averageJedi;
+}
+
+jedisChile172();
 
 //Graficas
 google.charts.load('current', {'packages':['bar']});
@@ -2112,4 +2824,129 @@ google.charts.load('current', {'packages':['bar']});
                           var chart = new google.charts.Bar(document.getElementById('top_g_div'));
                           // Convert the Classic options to Material options.
                           chart.draw(data, google.charts.Bar.convertOptions(options));
+                        };
+
+                        //Comienzan Graficas de estudiantes Satisfechas
+                        google.charts.load('current', {'packages':['bar']});
+                              google.charts.setOnLoadCallback(satisfiedAqp);
+
+                              function satisfiedAqp() {
+                                var data = new google.visualization.arrayToDataTable([
+                                  ['Generacion', 'Percentage'],
+                                  satisfiedAqp1,
+                                  satisfiedAqp2,
+                                ]);
+
+                                var options = {
+                                  title: 'Estudiantes Satisfechas con la experiencia Laboratoria',
+                                  // width: 900,
+                                  legend: { position: 'none' },
+                                  chart: { title: 'Arequipa',
+                                           subtitle: 'Estudiantes Satisfechas ' },
+                                  bars: 'horizontal', // Required for Material Bar Charts.
+                                  hAxis: {format: 'decimal'},
+                                  // height: 400,
+                                  colors: [ '#d95f02',],
+                                  axes: {
+                                    x: {
+                                      0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                                    }
+                                  },
+                                  bar: { groupWidth: "90%" }
+                                };
+
+                                var chart = new google.charts.Bar(document.getElementById('top_1_div'));
+                                chart.draw(data, options);
+                              };
+
+                                  google.charts.setOnLoadCallback(satisfiedCdmx);
+                              function satisfiedCdmx() {
+                                var data = new google.visualization.arrayToDataTable([
+                                  ['Generacion', 'Percentage'],
+                                  satisfiedCdmx1,
+                                  satisfiedCdmx2,
+                                ]);
+
+                                var options = {
+                                  title: 'Estudiantes Satisfechas con la experiencia Laboratoria',
+                                  // width: 900,
+                                  legend: { position: 'none' },
+                                  chart: { title: 'CDMX',
+                                           subtitle: 'Estudiantes Satisfechas ' },
+                                  bars: 'horizontal', // Required for Material Bar Charts.
+                                  hAxis: {format: 'decimal'},
+                                  // height: 400,
+                                  colors: [ '#b173dd',],
+                                  axes: {
+                                    x: {
+                                      0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                                    }
+                                  },
+                                  bar: { groupWidth: "90%" }
+                                };
+
+                                var chart = new google.charts.Bar(document.getElementById('top_2_div'));
+                                chart.draw(data, options);
+                              };
+
+                              google.charts.setOnLoadCallback(satisfiedLim);
+                          function satisfiedLim() {
+                            var data = new google.visualization.arrayToDataTable([
+                              ['Generacion', 'Percentage'],
+                              satisfiedLim1,
+                              satisfiedLim2,
+                              satisfiedLim3,
+                            ]);
+
+                            var options = {
+                              title: 'Estudiantes Satisfechas con la experiencia Laboratoria',
+                              // width: 900,
+                              legend: { position: 'none' },
+                              chart: { title: 'LIMA',
+                                       subtitle: 'Estudiantes Satisfechas ' },
+                              bars: 'horizontal', // Required for Material Bar Charts.
+                              hAxis: {format: 'decimal'},
+                              // height: 400,
+                              colors: [ '#eacd27'],
+                              axes: {
+                                x: {
+                                  0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                                }
+                              },
+                              bar: { groupWidth: "90%" }
+                            };
+
+                            var chart = new google.charts.Bar(document.getElementById('top_3_div'));
+                            chart.draw(data, options);
+                          };
+
+                          google.charts.setOnLoadCallback(satisfiedSCL);
+                        function satisfiedSCL() {
+                        var data = new google.visualization.arrayToDataTable([
+                          ['Generacion', 'Percentage'],
+                          satisfiedSCL1,
+                          satisfiedSCL2,
+                          satisfiedSCL2,
+                        ]);
+
+                        var options = {
+                          title: 'Estudiantes Satisfechas con la experiencia Laboratoria',
+                          // width: 900,
+                          legend: { position: 'none' },
+                          chart: { title: 'Santiago de Chile',
+                                   subtitle: 'Estudiantes Satisfechas ' },
+                          bars: 'horizontal', // Required for Material Bar Charts.
+                          hAxis: {format: 'decimal'},
+                          // height: 400,
+                          colors: [ '#4dc8ea'],
+                          axes: {
+                            x: {
+                              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                            }
+                          },
+                          bar: { groupWidth: "90%" }
+                        };
+
+                        var chart = new google.charts.Bar(document.getElementById('top_4_div'));
+                        chart.draw(data, options);
                         };

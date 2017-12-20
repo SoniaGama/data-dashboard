@@ -13,7 +13,7 @@
       <nav id="menu">
         <ul class="nav">
   				<li id="home"><a href="#"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-  				<li id="data-students"><a href="">Datos estudiantes</a>
+  				<li id="data-students"><a href="#">Datos estudiantes</a>
   					<ul>
               <li id="students-arequipa"><a href="">Arequipa</a>
                 <ul>
@@ -78,85 +78,62 @@
       </nav>
 		</header>
 
-    <main id="container" class="clear">
-      <div id="information">
-        <p> Información general de sedes y generaciones </p>
-      </div>
-
-      <section id="tabs">
+    <section id="tabs" class="clear left">
         <ul class="sedes-tabs">
-          <li><button class="tab" data-tab-sedes="arequipa" type="button" name="button"> Arequipa </button></li>
-          <li><button class="tab" data-tab-sedes="cdmx" type="button" name="button"> CDMX </button></li>
-          <li><button class="tab" data-tab-sedes="lima" type="button" name="button"> Lima </button></li>
-          <li><button class="tab" data-tab-sedes="chile" type="button" name="button"> Santiago de Chile </button></li>
+          <li><button id="nps" class="tab" type="button"> NPS </button></li>
+          <li><button id="arequipa" class="tab" data-tab-sedes="arequipa" type="button" name="button"> Arequipa </button></li>
+          <li><button id="cdmx" class="tab" data-tab-sedes="cdmx" type="button" name="button"> CDMX </button></li>
+          <li><button id="lima" class="tab" data-tab-sedes="lima" type="button" name="button"> Lima </button></li>
+          <li><button id="chile" class="tab" data-tab-sedes="chile" type="button" name="button"> Santiago de Chile </button></li>
         </ul>
+      </section>
           <!-- contenido -->
-        <section id="container-sedes">
-          <article id="sede-arequipa">
-            <div class="sede-arequipa">
-              <h3> hola, arequipa </h3>
-            </div>
-          </article>
-          <article id="sede-cdmx">
-            <div class="sede-cdmx">
-              <h3> hola, CDMX </h3>
-            </div>
-          </article>
-          <article id="sede-lima">
-            <div class="sede-lima">
-              <h3> hola, lima </h3>
-            </div>
-          </article>
-          <article id="sede-chile">
-            <div class="sede-chile">
-              <h3> hola, chile </h3>
-            </div>
-          </article>
-        </section>
 
     <main id="container" class="clear">
 
-      <section id="information">
-        <p> Información general de sedes y generaciones </p>
-      </section>
 
-      <section id="tabs">
-        <!--
-        tabs de pantalla principal
-        <section id="tab-cdmx">
-          <p> CDMX </p>
-        </section>
-        <section id="tab-Lima">
-          <p> Lima </p>
-        </section>
-        <section id="tab-arequipa">
-          <p> Arequipa </p>
-        </section>
-        <section id="tab-chile">
-          <p> Santiago de Chile </p>
+    <section id="information">
+    <!--Aqui un parrafo sobre que estamos mostrando informacion general-->
+    </section>
+
+    <section id="container-sedes">
+          <article id="sede-arequipa" class="sede-arequipa">
+              <!--Aqui la informacion de Arequipa general-->
+          </article>
+
+          <article id="sede-cdmx" class="sede-cdmx">
+
+              <!--Aqui la informacion de cdmx general-->
+
+          </article>
+
+          <article id="sede-lima" class="sede-lima">
+
+              <!--Aqui la informacion de Lima general-->
+
+          </article>
+
+          <article id="sede-chile" class="sede-chile">
+
+            <!--Aqui la informacion de Chile general-->
+
+          </article>
+
         </section>
 
+    <section id="graphs">
 
-        tabs de pantalla Alumnas y Profes
-        <section id="tab-general">
-          <p> General Sprints </p>
-        </section>
-        <section id="tab-sprint-1">
-          <p> Sprint 1 </p>
-        </section>
-        <section id="tab-sprint-2">
-          <p> Sprint 2 </p>
-        </section>
-        <section id="tab-sprint-3">
-          <p> Sprint 3 </p>
-        </section>
-        <section id="tab-sprint-4">
-          <p> Sprint 4 </p>
-        </section>
-        -->
-      </section>
+      <!--Contenedrores graficas porcentaje desercion  -->
+      <div id="top_x_div" style="width: 400px; height: 300px;"></div>
+      <div id="top_i_div" style="width: 400px; height: 300px;"></div>
+      <div id="top_f_div" style="width: 400px; height: 300px;"></div>
+      <div id="top_g_div" style="width: 400px; height: 300px;"></div>
+      <!-- Contenedores graficas estudiantes satisfechas -->
+        <div id="top_1_div" style="width: 400px; height: 300px;"></div>
+        <div id="top_2_div" style="width: 400px; height: 300px;"></div>
+        <div id="top_3_div" style="width: 400px; height: 300px;"></div>
+        <div id="top_4_div" style="width: 400px; height: 300px;"></div>
 
-      <section id="graphs">
         <!--
         Gráficas pantalla principal
         <div id="students-satisfied">
@@ -167,8 +144,6 @@
           Gráfica
           <p> Total de estudiantes presentes </p>
         </div>
-
-
 
         Graficas pantalla Alumnas
         <div id="students-desertion">
@@ -186,8 +161,6 @@
           <p> % Estudiantes que superan la meta de puntos HSE </p>
         </div>
 
-
-
         Graficas pantalla profes
         <div id="average-staff">
           Gráfica
@@ -198,65 +171,7 @@
       </section>
     </main>
 
-<!-- REFERENCIA DE ESTRUCTURA
-    <section>
-      <div>
-        <p> Información general de sedes y generaciones </p>
-      </div>
-      <section>
-        <div>
-          <p> CDMX </p>
-        </div>
-        <div>
-          <p> Alumnas satisfechas con Laboratoria </p>
-        </div>
-        <div>
-          <p> Total de estudiantes presentes </p>
-        </div>
-      </section>
-      <section>
-        <div>
-          <p> Lima </p>
-        </div>
-        <div>
-          <p> Alumnas satisfechas con Laboratoria </p>
-        </div>
-        <div>
-          <p> Total de estudiantes presentes </p>
-        </div>
-      </section>
-      <section>
-        <div>
-          <p> Arequipa </p>
-        </div>
-        <div>
-          <p> Alumnas satisfechas con Laboratoria </p>
-        </div>
-        <div>
-          <p> Total de estudiantes presentes </p>
-        </div>
-      </section>
-      <section>
-        <div>
-          <p> Santiago de Chile </p>
-        </div>
-        <div>
-          <p> Alumnas satisfechas con Laboratoria </p>
-        </div>
-        <div>
-          <p> Total de estudiantes presentes </p>
-        </div>
-      </section>
-    </section>
-    -->
-    <div id="top_x_div" style="width: 400px; height: 300px;"></div>
-      <div id="top_i_div" style="width: 400px; height: 300px;"></div>
-      <div id="top_f_div" style="width: 400px; height: 300px;"></div>
-      <div id="top_g_div" style="width: 400px; height: 300px;"></div>
-		<!-- Base de datos -->
-
 		<script src="./js/data.js"></script>
-		<!-- Aquí va tus archivos JS -->
     <script src="./js/app.js"></script>
   </body>
 </html>
