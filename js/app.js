@@ -1986,7 +1986,16 @@ var chilePercentage20172 = function() {
 };
 chilePercentage20172();
 
-
+var perentageSuperaAqp1 =['2016-2', aqpPercentage20162()];
+var perentageSuperaAqp2 =['2017-1', aqpPercentage20171()];
+var perentageSuperaCdmx1 =['2017-1', cdmxPercentage20171()];
+var perentageSuperaCdmx2 =['2017-2', cdmxPercentage20172()];
+var perentageSuperaLim1 =['2016-2', limaPercentage20162()];
+var perentageSuperaLim2 =['2016-2', limaPercentage20171()];
+var perentageSuperaLim3 =['2017-1', limaPercentage20172()];
+var perentageSuperaSLC1 =['2016-2',chilePercentage20162()];
+var perentageSuperaSLC2 =['2017-1',chilePercentage20171()];
+var perentageSuperaSLC3 =['2017-2',chilePercentage20172()];
 // document.write("<br><br> Generación 2016-2 Arequipa: " + aqpPercentage20162() + "% supero la meta de puntos Tech y HSE.");
 // document.write("<br> Generación del 2017-1 Arequipa: " + aqpPercentage20171() + "% supero la meta de puntos Tech y HSE.");
 // document.write("<br> Generación del 2017-1 CDMX: " + cdmxPercentage20171() + "% supero la meta de puntos Tech y HSE.");
@@ -2947,5 +2956,97 @@ google.charts.load('current', {'packages':['bar']});
                         };
 
                         var chart = new google.charts.Bar(document.getElementById('top_4_div'));
+                        chart.draw(data, options);
+                        };
+                        google.charts.setOnLoadCallback(SuperaAqp1);
+                        function SuperaAqp1() {
+                        var data = new google.visualization.arrayToDataTable([
+                        ['Generacion', 'Percentage'],
+                        perentageSuperaAqp1,
+                        perentageSuperaAqp2
+
+                        ]);
+
+                        var options = {
+                        title: 'Porcentaje de Estudiantes que Superan Puntos Tech y HSE',
+                        // width: 900,
+                        legend: { position: 'none' },
+                        chart: { title: 'Arequipa',
+                                 subtitle: 'Estudiantes que superan metas Tech y HSE ' },
+                        bars: 'horizontal', // Required for Material Bar Charts.
+                        hAxis: {format: 'decimal'},
+                        // height: 400,
+                        colors: [ '#4dc8ea'],
+                        axes: {
+                          x: {
+                            0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                          }
+                        },
+                        bar: { groupWidth: "90%" }
+                        };
+
+                        var chart = new google.charts.Bar(document.getElementById('aqpsupera1'));
+                        chart.draw(data, options);
+                        };
+
+
+                        google.charts.setOnLoadCallback(SuperaCdmx);
+                        function SuperaCdmx() {
+                        var data = new google.visualization.arrayToDataTable([
+                        ['Generacion', 'Percentage'],
+                        perentageSuperaCdmx1,
+                        perentageSuperaCdmx2,
+                        ]);
+
+                        var options = {
+                        title: 'Porcentaje de Estudiantes que Superan Puntos Tech y HSE',
+                        // width: 900,
+                        legend: { position: 'none' },
+                        chart: { title: 'CDMX',
+                                 subtitle: 'Estudiantes que superan metas Tech y HSE ' },
+                        bars: 'horizontal', // Required for Material Bar Charts.
+                        hAxis: {format: 'decimal'},
+                        // height: 400,
+                        colors: [ '#4dc8ea'],
+                        axes: {
+                          x: {
+                            0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                          }
+                        },
+                        bar: { groupWidth: "90%" }
+                        };
+
+                        var chart = new google.charts.Bar(document.getElementById('cdmxSupera'));
+                        chart.draw(data, options);
+                        };
+
+                        google.charts.setOnLoadCallback(Superalim);
+                        function Superalim() {
+                        var data = new google.visualization.arrayToDataTable([
+                        ['Generacion', 'Percentage'],
+                        perentageSuperaLim1,
+                        perentageSuperaLim2,
+                        perentageSuperaLim3,
+                        ]);
+
+                        var options = {
+                        title: 'Porcentaje de Estudiantes que Superan Puntos Tech y HSE',
+                        // width: 900,
+                        legend: { position: 'none' },
+                        chart: { title: 'CDMX',
+                                 subtitle: 'Estudiantes que superan metas Tech y HSE ' },
+                        bars: 'horizontal', // Required for Material Bar Charts.
+                        hAxis: {format: 'decimal'},
+                        // height: 400,
+                        colors: [ '#4dc8ea'],
+                        axes: {
+                          x: {
+                            0: { side: 'top', label: 'Percentage'} // Top x-axis.
+                          }
+                        },
+                        bar: { groupWidth: "90%" }
+                        };
+
+                        var chart = new google.charts.Bar(document.getElementById('limSupera'));
                         chart.draw(data, options);
                         };

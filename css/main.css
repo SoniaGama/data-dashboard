@@ -75,7 +75,7 @@ margin-left: 38%;
 
 
 
-#two_page {
+.two_page {
 background-color: #fff;
 color: black;
 width: 100%;
@@ -84,7 +84,7 @@ padding-top: 0px;
 padding-bottom: 100px;
 }
 
-#two_page > h2 {
+ h2 {
 font-family: 'Montserrat', sans-serif;
 font-size: 30px;
 font-weight: bold;
@@ -98,12 +98,13 @@ width: 100%;
 #graficas > div {
 display:inline-block;
 height:300px
-width: 400px;
 margin-left: 0px;
 
 }
 
-
+#home, #data-students, #data-staff {
+	margin-left: 18%;
+}
 
 
 
